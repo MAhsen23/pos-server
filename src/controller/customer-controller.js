@@ -1,5 +1,22 @@
-const Customer = require('../models/customer');
+const { Customer } = require('../models/model');
 const mongoose = require('mongoose');
+
+exports.createCustomer = async (req, res) => {
+    try {
+        const existingCustomer = await Customer.findOne({ name: req.body.phoneNumber, user: req.user._id });
+        if (existingCustomer) {
+            return res.status(400).json({ message: 'Customer already exists for this user' });
+        }
+        const customer = new Customer({
+            ...req.body,
+            user: req.user._id
+        });
+        await customer.save();
+        res.status(201).json(customer);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
 
 exports.getCustomers = async (req, res) => {
     try {

@@ -1,4 +1,4 @@
-const Supplier = require('../models/supplier');
+const { Supplier } = require('../models/model');
 const mongoose = require('mongoose');
 
 exports.getSuppliers = async (req, res) => {
