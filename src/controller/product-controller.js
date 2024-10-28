@@ -1,5 +1,4 @@
-// controllers/productController.js
-const Product = require('../models/product');
+const { Product } = require('../models/model');
 const mongoose = require('mongoose');
 
 exports.createProduct = async (req, res) => {

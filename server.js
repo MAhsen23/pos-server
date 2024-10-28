@@ -2,17 +2,17 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const userRoutes = require('./src/routes/user');
-const productRoutes = require('./src/routes/product');
-const customerRoutes = require('./src/routes/customer');
-const supplierRoutes = require('./src/routes/supplier');
-const invoiceRoutes = require('./src/routes/invoice');
-const taxRoutes = require('./src/routes/tax');
-const expenseRoutes = require('./src/routes/expense');
-const purchaseRoutes = require('./src/routes/purchase');
+const userRoutes = require('./src/routes/user-routes');
+const productRoutes = require('./src/routes/product-routes');
+const customerRoutes = require('./src/routes/customer-routes');
+const supplierRoutes = require('./src/routes/supplier-routes');
+const invoiceRoutes = require('./src/routes/invoice-routes');
+const expenseRoutes = require('./src/routes/expense-routes');
+const purchaseRoutes = require('./src/routes/purchase-routes');
+const reportRoutes = require('./src/routes/report-routes');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(cors());
@@ -24,10 +24,9 @@ app.use('/api/products', productRoutes);
 app.use('/api/customers', customerRoutes);
 app.use('/api/suppliers', supplierRoutes);
 app.use('/api/invoices', invoiceRoutes);
-app.use('/api/taxes', taxRoutes);
 app.use('/api/expenses', expenseRoutes);
 app.use('/api/purchases', purchaseRoutes);
-
+app.use('/api/reports', reportRoutes);
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
