@@ -12,7 +12,7 @@ const purchaseRoutes = require('./src/routes/purchase-routes');
 const reportRoutes = require('./src/routes/report-routes');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 
 app.use(express.json());
 app.use(cors());
